@@ -14,21 +14,24 @@ clearBtn.addEventListener("click", clearList);
 todoList.addEventListener("change", toggleTodo);
 
 function addTodo() {
-  const todoText = todoInput.value.trim();
-  if (todoText !== "") {
-    const li = document.createElement("li");
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.className = "checkbox";
-    const span = document.createElement("span");
-    span.innerText = todoText;
-    li.appendChild(checkbox);
-    li.appendChild(span);
-    li.style.backgroundColor = document.getElementById("color").value;
-    todoList.appendChild(li);
-    todoInput.value = "";
+    const todoText = todoInput.value.trim();
+    const color = document.getElementById("color").value;
+    if (todoText !== "") {
+      const li = document.createElement("li");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.className = "checkbox";
+      const span = document.createElement("span");
+      span.innerText = todoText;
+      span.style.color = color;
+      li.appendChild(checkbox);
+      li.appendChild(span);
+      todoList.appendChild(li);
+      todoInput.value = "";
+      document.getElementById("color").value = "#000000"; // Reset color to black
+    }
   }
-}
+  
 
 function clearList() {
   todoList.innerHTML = "";
